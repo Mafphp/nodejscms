@@ -21,6 +21,7 @@ class Application {
         this.setupExpress();
         this.setupMongoConnection();
         this.configExpress();
+        this.setupRoutes();
     }
 
     setupExpress() {
@@ -61,7 +62,10 @@ class Application {
         app.use(passport.initialize());
         app.use(passport.session());
 
-        app.get('/', (req, res) => res.send('ok'))
+    }
+
+    setupRoutes() {
+        require('./routes')(app);
     }
 }
 
